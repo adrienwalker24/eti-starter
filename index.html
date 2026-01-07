@@ -8,13 +8,14 @@
     :root{
       --bg:#ffffff;
       --ink:#111111;
-      --muted:#6b6b6b;
-      --line:#e8e8e8;
+      --muted:#4f4f4f;
+      --muted2:#6b6b6b;
+      --line:#e5e5e5;
       --card:#fafafa;
+
       --accent:#946735;   /* warm brown */
       --accent2:#CDA476;  /* muted gold */
-      --ok:#1f7a3a;
-      --warn:#8a5b00;
+
       --shadow: 0 10px 30px rgba(0,0,0,.06);
       --radius: 18px;
     }
@@ -25,23 +26,14 @@
       color:var(--ink);
       background:linear-gradient(180deg,#fff, #fff 40%, #fbf7f3);
     }
-    .wrap{max-width:980px;margin:0 auto;padding:26px 18px 60px}
+    .wrap{max-width:1040px;margin:0 auto;padding:26px 18px 60px}
     header{
       display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
       margin-bottom:18px;
     }
-    .brand{
-      display:flex;flex-direction:column;gap:6px;
-    }
-    .title{
-      font-size:28px;line-height:1.15;margin:0;
-      letter-spacing:-.02em;
-    }
-    .subtitle{
-      margin:0;
-      color:var(--muted);
-      max-width:68ch;
-    }
+    .brand{display:flex;flex-direction:column;gap:6px}
+    .title{font-size:30px;line-height:1.15;margin:0;letter-spacing:-.02em}
+    .subtitle{margin:0;color:var(--muted2);max-width:74ch;font-size:14px}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 12px;border:1px solid var(--line);border-radius:999px;
@@ -56,9 +48,8 @@
       gap:16px;
       margin-top:14px;
     }
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr}
-    }
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+
     .card{
       background:var(--bg);
       border:1px solid var(--line);
@@ -75,9 +66,10 @@
       margin:0;font-size:16px;letter-spacing:.02em;
       text-transform:uppercase;
     }
-    .card .hd p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .card .hd p{margin:6px 0 0;color:var(--muted2);font-size:13px}
     .card .bd{padding:16px}
-    label{display:block;font-size:13px;color:var(--muted);margin:12px 0 8px}
+
+    label{display:block;font-size:13px;color:var(--muted2);margin:12px 0 8px}
     input[type="text"], textarea, select{
       width:100%;
       padding:12px 12px;
@@ -86,49 +78,46 @@
       outline:none;
       background:#fff;
       font-size:14px;
+      color:var(--ink);
     }
     textarea{min-height:92px;resize:vertical}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     @media (max-width: 520px){ .row{grid-template-columns:1fr} }
+
     .chips{display:flex;flex-wrap:wrap;gap:10px}
     .chip{
       display:flex;align-items:center;gap:8px;
       padding:10px 12px;border:1px solid var(--line);
       border-radius:999px;background:#fff;
       font-size:13px;color:var(--ink);
+      user-select:none;
     }
     .chip input{accent-color: var(--accent)}
-    .actions{
-      display:flex;flex-wrap:wrap;gap:10px;margin-top:16px
-    }
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
     button{
-      border:0;
-      border-radius:999px;
-      padding:12px 14px;
-      cursor:pointer;
-      font-weight:600;
-      font-size:14px;
+      border:0;border-radius:999px;
+      padding:12px 14px;cursor:pointer;
+      font-weight:700;font-size:14px;
     }
     .btn-primary{
       background:linear-gradient(135deg,var(--accent2), var(--accent));
       color:#fff;
     }
     .btn-ghost{
-      background:#fff;
-      border:1px solid var(--line);
+      background:#fff;border:1px solid var(--line);
       color:var(--ink);
     }
     .btn-link{
-      background:transparent;
-      color:var(--accent);
-      padding:8px 6px;
-      text-decoration:underline;
-      font-weight:600;
+      background:transparent;color:var(--accent);
+      padding:8px 6px;text-decoration:underline;
+      font-weight:700;
     }
-    .note{
-      margin-top:10px;
-      font-size:12px;color:var(--muted);
-    }
+
+    .note{margin-top:10px;font-size:12px;color:var(--muted2)}
+    .success{color:#1f7a3a;font-weight:800;font-size:12px;display:none}
+    .warn{color:#8a5b00;font-weight:800;font-size:12px;display:none}
+
     .out{
       background:var(--card);
       border:1px solid var(--line);
@@ -138,37 +127,35 @@
     }
     .out h3{margin:0 0 8px;font-size:14px;text-transform:uppercase;letter-spacing:.03em}
     .out p{margin:8px 0;color:#1a1a1a}
-    .out .muted{color:var(--muted);font-size:13px}
+    .out .muted{color:var(--muted2);font-size:13px}
+
     .idea{
       padding:12px;border-radius:14px;background:#fff;border:1px solid var(--line);
       margin:10px 0;
     }
-    .idea .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-    .idea .v{margin:6px 0 0;font-size:14px}
+    .idea .k{font-size:12px;color:var(--muted2);text-transform:uppercase;letter-spacing:.04em}
+    .idea .v{margin:6px 0 0;font-size:14px;line-height:1.35}
+
     .badge{
       display:inline-flex;align-items:center;gap:8px;
-      padding:6px 10px;border-radius:999px;border:1px solid var(--line);
-      background:#fff;font-size:12px;color:var(--muted)
+      padding:7px 10px;border-radius:999px;border:1px solid var(--line);
+      background:#fff;font-size:12px;color:var(--muted);
+      font-weight:700;
     }
-    .bar{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      margin-top:10px;flex-wrap:wrap;
-    }
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;flex-wrap:wrap}
     .divider{height:1px;background:var(--line);margin:12px 0}
+
     .cta{
       background:#fff;
       border:1px dashed rgba(148,103,53,.45);
       border-radius:16px;
       padding:14px;
     }
-    .cta h4{margin:0 0 6px;font-size:14px}
-    .cta p{margin:0;color:var(--muted);font-size:13px}
-    .cta .actions{margin-top:10px}
-    .success{
-      color:var(--ok);font-weight:700;font-size:12px;display:none
-    }
-    .warn{color:var(--warn);font-weight:700;font-size:12px;display:none}
-    footer{margin-top:18px;color:var(--muted);font-size:12px}
+    .cta h4{margin:0 0 6px;font-size:15px}
+    .cta p{margin:0;color:var(--muted2);font-size:13px;line-height:1.35}
+    .cta ul{margin:10px 0 0 18px;padding:0;color:#1a1a1a}
+    .cta li{margin:6px 0;font-size:13px;line-height:1.35}
+    footer{margin-top:18px;color:var(--muted2);font-size:12px}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
   </style>
 </head>
@@ -177,7 +164,7 @@
     <header>
       <div class="brand">
         <h1 class="title">ETI Starter <span class="mono" style="opacity:.55;">(Experience → Income Starter)</span></h1>
-        <p class="subtitle">Drop your job titles (roles only) and get 3 realistic monetization directions you can start without overthinking.</p>
+        <p class="subtitle">Drop your job titles (roles only) and get 3 realistic monetization directions that fit your time — without overthinking.</p>
       </div>
       <div class="pill">✅ Free starter tool • fast clarity • low overwhelm</div>
     </header>
@@ -187,11 +174,11 @@
       <section class="card">
         <div class="hd">
           <h2>Your Inputs</h2>
-          <p>Keep it simple. Job titles / roles only — paid or unpaid.</p>
+          <p>Keep it simple. Job titles / roles only — paid or unpaid. One is enough.</p>
         </div>
         <div class="bd">
           <label for="roles">1) Job titles / roles (required)</label>
-          <textarea id="roles" placeholder="Example: Customer Service Rep; Etsy Seller; Office Manager; PTA volunteer; Event planner; Blogger"></textarea>
+          <textarea id="roles" placeholder="Example: Contract Specialist; Office Manager; Realtor; Teacher; Admin Assistant"></textarea>
 
           <div class="row">
             <div>
@@ -204,11 +191,11 @@
               </select>
             </div>
             <div>
-              <label for="time">4) Weekly time reality</label>
+              <label for="time">Time you realistically have each week</label>
               <select id="time">
-                <option value="1–2 hours/week">1–2 hrs</option>
-                <option value="A few hours/week">A few hrs</option>
-                <option value="Flexible time">Flexible</option>
+                <option value="Barely any (1–2 hours)">Barely any (1–2 hours)</option>
+                <option value="A little room (3–5 hours)">A little room (3–5 hours)</option>
+                <option value="Flexible right now">Flexible right now</option>
               </select>
             </div>
           </div>
@@ -231,7 +218,7 @@
           </div>
           <div class="note">Privacy note: This tool runs in your browser. If you click “Save,” it stores only on your device (localStorage).</div>
           <div class="success" id="savedMsg">Saved ✓</div>
-          <div class="warn" id="warnMsg">Please add at least 2 roles/titles.</div>
+          <div class="warn" id="warnMsg">Please add at least 1 role/title.</div>
         </div>
       </section>
 
@@ -255,7 +242,8 @@
 
             <div class="divider"></div>
 
-            <h3>3 Monetization Ideas (curated)</h3>
+            <h3>3 Monetization Ideas</h3>
+            <p class="muted" id="frameLine"></p>
             <div id="ideas"></div>
 
             <div class="divider"></div>
@@ -272,13 +260,18 @@
             <div class="divider"></div>
 
             <div class="cta">
-              <h4>Want me to build your roadmap?</h4>
-              <p>Get a done-for-you 2-week plan + your best 3 offers (based on your experience) — clear next steps, no overwhelm.</p>
+              <h4>Want your ETI RoadMap built for you?</h4>
+              <p>I’ll take what you entered here and turn it into a focused, step-by-step income starter plan — so you’re not guessing what to do next.</p>
+              <ul>
+                <li>Your <strong>top 3 income directions</strong>, chosen and narrowed for your strengths + time</li>
+                <li>A <strong>7–14 day action roadmap</strong> so you know exactly what to do first</li>
+                <li>Clear guidance on <strong>what to build now vs. what to ignore</strong></li>
+              </ul>
               <div class="actions">
-                <a class="btn-primary" id="roadmapLink" href="#" target="_blank" rel="noopener">Get the $27 Roadmap</a>
-                <a class="btn-ghost" id="vipLink" href="#" target="_blank" rel="noopener">Upgrade: $97 1:1 Kit</a>
+                <a class="btn-primary" id="roadmapLink" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:12px 14px;border-radius:999px;">Get My ETI RoadMap</a>
+                <a class="btn-ghost" id="vipLink" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:12px 14px;border-radius:999px;">Upgrade: 1:1 Kit</a>
               </div>
-              <p class="note">Tip: set these links to your checkout (ThriveCart/Beacons/etc.).</p>
+              <p class="note">Tip: set these buttons to your checkout or “comment ROADMAP” flow for tonight.</p>
             </div>
 
             <div class="actions" style="margin-top:14px;">
@@ -302,27 +295,57 @@
   </div>
 
 <script>
-  // ====== CONFIG: set your paid links here ======
-  const ROADMAP_URL = "https://YOUR-CHECKOUT-LINK.com/eti-roadmap";
-  const VIP_URL     = "https://YOUR-CHECKOUT-LINK.com/eti-vip";
+  // ====== CONFIG: set your links here ======
+  // If you don't have checkout links ready tonight, set ROADMAP_URL to a page that explains the RoadMap
+  // OR set it to a simple Stan Store product URL.
+  const ROADMAP_URL = "https://YOUR-LINK-HERE.com/eti-roadmap";
+  const VIP_URL     = "https://YOUR-LINK-HERE.com/eti-1on1";
 
   // ====== Helpers ======
   const $ = (id) => document.getElementById(id);
+
+  function rand(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
 
   function getStrengths(){
     return Array.from(document.querySelectorAll('input[name="strength"]:checked')).map(x => x.value);
   }
 
   function splitRoles(text){
-    // split by new lines, commas, semicolons
     return text
       .split(/\n|,|;/g)
       .map(s => s.trim())
       .filter(Boolean);
   }
 
+  function normalizeRole(s){ return (s || "").toLowerCase(); }
+
+  function inferRoleSignals(roles){
+    const r = roles.map(normalizeRole).join(" | ");
+
+    const signals = {
+      contracts: /(contract|procure|rfp|proposal|bid|compliance|gov|government|federal|solicitation)/.test(r),
+      realtor: /(realtor|real estate|listing|buyer|seller|broker|agent)/.test(r),
+      mechanic: /(mechanic|technician|repair|maintenance|aircraft|aviation|inspector)/.test(r),
+      admin: /(admin|assistant|office|coordinator|scheduler|operations|manager|program)/.test(r),
+      teacher: /(teacher|educator|trainer|instruction|coach|tutor)/.test(r),
+      creator: /(blogger|content|writer|social|marketing|designer)/.test(r),
+      finance: /(account|bookkeep|tax|finance|payroll)/.test(r),
+      healthcare: /(nurse|clinic|medical|health|therapy|therapist)/.test(r)
+    };
+
+    // pick a "primary" signal for example generation
+    if(signals.contracts) return "contracts";
+    if(signals.realtor) return "realtor";
+    if(signals.mechanic) return "mechanic";
+    if(signals.finance) return "finance";
+    if(signals.healthcare) return "healthcare";
+    if(signals.teacher) return "teacher";
+    if(signals.creator) return "creator";
+    if(signals.admin) return "admin";
+    return "general";
+  }
+
   function pickLane(direction, strengths){
-    // lightweight lane logic
     const s = new Set(strengths);
     if(direction !== "Not sure") return direction;
 
@@ -334,81 +357,264 @@
   }
 
   function timeGuidance(time){
-    if(time.includes("1–2")) return "Keep it tiny: one offer idea + one landing page or one Etsy listing. No big builds.";
-    if(time.includes("few")) return "Choose one offer lane and build one small asset + one simple promotion loop.";
-    return "You can build faster: pick a lane, ship a starter offer, then refine based on feedback.";
+    if(time.includes("1–2")) return "Keep it tiny: one offer + one simple way to share it. No big builds.";
+    if(time.includes("3–5")) return "Choose one lane and build one small asset + one simple promotion loop.";
+    return "You can move faster: pick one lane, ship a starter offer, then refine based on feedback.";
   }
 
-  function buildSummary(roles, strengths, direction, time){
-    const strengthText = strengths.length ? strengths.join(", ") : "your natural skills";
-    return `Based on your roles (${roles.slice(0,4).join(", ")}${roles.length>4 ? "…" : ""}), your best leverage is ${strengthText}. Your curiosity points toward ${direction}, and your time reality is ${time}. The goal: pick one lane that fits your life and ship something small that proves demand.`;
+  function platformLine(){
+    return "You can sell or deliver this using a simple platform like Etsy, Standstore, Gumroad, Shopify, or even a checkout link.";
+  }
+
+  function buildSummary(roles, strengths, lane, time){
+    const strengthText = strengths.length ? strengths.join(", ") : "your natural strengths";
+    const firstRole = roles[0] || "your role";
+    const laneLine = lane ? `Your curiosity points toward ${lane}.` : "";
+    return `Based on your role(s) (${firstRole}${roles.length>1 ? " + more" : ""}), your best leverage is ${strengthText}. ${laneLine} Time fit: ${time}. The goal is to pick one lane that fits your life and ship something small that proves demand.`;
+  }
+
+  function roleExamples(primary){
+    const examples = {
+      contracts: {
+        sell: [
+          "an RFP response review guide (what reviewers look for + common misses)",
+          "a compliance check framework for proposals",
+          "a bid/no-bid decision guide (so people stop wasting time)"
+        ],
+        paid: [
+          "a quick RFP review with notes and improvement suggestions",
+          "a proposal ‘score + fix’ review (clarity, compliance, formatting)",
+          "a requirements checklist review so they don’t miss mandatory items"
+        ],
+        interest: [
+          "a free ‘RFP red flags’ checklist (what gets people eliminated)",
+          "a short “proposal clarity” swipe file (better phrasing examples)",
+          "a one-page ‘compliance basics’ starter guide"
+        ]
+      },
+      realtor: {
+        sell: [
+          "a buyer prep pack (what to do before you tour homes)",
+          "a listing-ready checklist + timeline (so sellers stop guessing)",
+          "a negotiation script pack (offers, counters, objections)"
+        ],
+        paid: [
+          "a quick listing critique (photos, description, pricing signals)",
+          "a buyer game-plan call (budget, offer strategy, next steps)",
+          "an open house plan review (signage, flow, follow-up)"
+        ],
+        interest: [
+          "a free ‘first-time buyer’ quick-start guide",
+          "a script for handling common objections",
+          "a one-page ‘what to expect’ timeline handout"
+        ]
+      },
+      mechanic: {
+        sell: [
+          "a ‘what to check first’ troubleshooting guide for common issues",
+          "a maintenance schedule cheat sheet (what matters, when)",
+          "a buyer’s inspection guide (what to look for before you buy)"
+        ],
+        paid: [
+          "a ‘symptom → likely cause’ troubleshooting consult (short + focused)",
+          "a used-vehicle inspection checklist review (what they missed)",
+          "a maintenance plan build (based on mileage and usage)"
+        ],
+        interest: [
+          "a free ‘top 10 maintenance mistakes’ guide",
+          "a quick checklist for buying used",
+          "a ‘what that noise might mean’ starter sheet"
+        ]
+      },
+      finance: {
+        sell: [
+          "a simple expense tracker + category guide",
+          "a tax-season prep pack (what to gather + how to label it)",
+          "a pricing calculator template for a small business"
+        ],
+        paid: [
+          "a quick books/records cleanup review with notes",
+          "a pricing sanity check (costs → price range)",
+          "a tax-prep readiness review (what’s missing)"
+        ],
+        interest: [
+          "a free ‘what to track weekly’ sheet",
+          "a starter category list for expenses",
+          "a quick tax-season checklist"
+        ]
+      },
+      healthcare: {
+        sell: [
+          "a patient prep guide (what to bring, what to ask)",
+          "a symptom tracker template that helps appointments go better",
+          "a caregiver organization pack (meds, notes, appointments)"
+        ],
+        paid: [
+          "a care plan organization consult (short + practical)",
+          "a ‘questions to ask your provider’ prep session",
+          "a paperwork organization + summary setup"
+        ],
+        interest: [
+          "a free appointment prep checklist",
+          "a symptom tracker starter sheet",
+          "a ‘what to ask’ question list"
+        ]
+      },
+      teacher: {
+        sell: [
+          "a lesson plan template pack",
+          "a classroom routine starter system",
+          "a parent communication script pack"
+        ],
+        paid: [
+          "a curriculum map review with suggestions",
+          "a classroom management plan review",
+          "a teacher side-income setup sprint (simple + realistic)"
+        ],
+        interest: [
+          "a free classroom routine checklist",
+          "a ‘first week’ plan sheet",
+          "a parent email swipe file"
+        ]
+      },
+      creator: {
+        sell: [
+          "a content idea vault for one niche",
+          "a caption + hook pack",
+          "a simple brand message template"
+        ],
+        paid: [
+          "a profile + offer review (clarity + positioning)",
+          "a content audit (what to post next + why)",
+          "a ‘offer clarity’ sprint"
+        ],
+        interest: [
+          "a free 7-day content starter list",
+          "a hook formula cheat sheet",
+          "a quick caption framework"
+        ]
+      },
+      admin: {
+        sell: [
+          "an operations checklist pack (weekly/monthly)",
+          "a simple SOP template bundle (plug-and-play)",
+          "an inbox + calendar workflow system"
+        ],
+        paid: [
+          "a workflow cleanup consult (calendar/inbox/process)",
+          "an SOP outline build for one process",
+          "a small business ‘systems starter’ setup"
+        ],
+        interest: [
+          "a free weekly reset checklist",
+          "an email templates swipe file",
+          "a simple scheduling workflow guide"
+        ]
+      },
+      general: {
+        sell: [
+          "a starter guide that helps someone avoid beginner mistakes",
+          "a decision framework that makes a hard choice easier",
+          "a simple template pack based on what you used to do"
+        ],
+        paid: [
+          "a short review + notes service",
+          "a 60-minute clarity session with a written plan",
+          "a focused ‘fix one thing’ sprint"
+        ],
+        interest: [
+          "a free quick-start checklist",
+          "a swipe file of examples",
+          "a one-page cheat sheet people can save"
+        ]
+      }
+    };
+    return examples[primary] || examples.general;
   }
 
   function makeIdeas(roles, strengths, lane){
-    // Use roles + strengths to generate curated, non-overwhelming ideas.
-    // This is deterministic (no AI), but feels personalized.
-    const roleHints = roles.slice(0,3);
-    const s = new Set(strengths);
+    const primary = inferRoleSignals(roles);
+    const ex = roleExamples(primary);
 
-    const ideas = [];
+    const openerLines = [
+      "This is the kind of thing people with your background often monetize.",
+      "These are common income directions that tend to fit this type of experience.",
+      "Think of these as ‘directions’ — not instructions. You’ll pick one lane."
+    ];
+    $("frameLine").textContent = rand(openerLines);
 
-    // Idea 1: Templates/systems lane
-    if(lane === "Digital product"){
-      const angle = (s.has("Organizing") || s.has("Templates/systems"))
-        ? "Turn your process into a plug-and-play template."
-        : "Package what you already do into a simple downloadable.";
-      ideas.push({
-        k:"Digital Product",
-        v:`${angle} Create a 1-page checklist / planner that helps someone get a result you used to deliver in your roles (ex: “${roleHints[0] || "Your Role"}” workflow checklist). Sell it on Etsy or Gumroad.`
-      });
-    } else if(lane === "Coaching or services"){
-      ideas.push({
-        k:"Service Offer",
-        v:`Create a single “done-with-you” service based on your experience: a 60-minute clarity session + a simple deliverable (script, plan, or setup). Position it around the result, not your resume.`
-      });
-    } else {
-      ideas.push({
-        k:"Content & Education",
-        v:`Pick one topic you can explain quickly because you lived it. Create a weekly “how I’d handle this” series and funnel people to one starter resource (PDF, checklist, mini-training).`
-      });
-    }
+    const sellPhrases = [
+      `Package what you already know into something people can buy — like ${rand(ex.sell)}.`,
+      `Turn your experience into a simple paid resource — like ${rand(ex.sell)}.`,
+      `Create a practical ‘starter’ asset people pay for — like ${rand(ex.sell)}.`
+    ];
 
-    // Idea 2: Coaching/services option (always)
-    ideas.push({
-      k:"Fast Cash Offer",
-      v:`Offer a “mini audit” or “setup sprint” to a specific person you used to help in your roles. Keep it narrow: one problem, one outcome, one price. (Example: “I’ll fix your onboarding email sequence in 48 hours.”)`
-    });
+    const paidHelpPhrases = [
+      `Offer a short paid help option where someone sends you their situation and you give focused notes — like ${rand(ex.paid)}.`,
+      `Sell a “review + feedback” service based on what you already do — like ${rand(ex.paid)}.`,
+      `Offer a small, fast service that solves one problem — like ${rand(ex.paid)}.`
+    ];
 
-    // Idea 3: Content/lead magnet option (always)
-    ideas.push({
-      k:"Audience Builder",
-      v:`Create one free “starter” resource tied to your experience (checklist, script, swipe file). Post it consistently for 7–14 days with the same message so people know what you do.`
-    });
+    const interestPhrases = [
+      `Create one free starter resource to build interest — like ${rand(ex.interest)} — and talk about it consistently for 7–14 days.`,
+      `Make one simple freebie people can save — like ${rand(ex.interest)} — and keep the message the same for a couple weeks.`,
+      `Use one free resource to attract the right people — like ${rand(ex.interest)} — then point them to your paid next step.`
+    ];
 
-    // Make sure they're distinct and not overwhelming
-    return ideas.slice(0,3);
+    // Keep structure consistent: 3 ideas
+    return [
+      {
+        k: "DIGITAL PRODUCT",
+        v: `${rand(sellPhrases)} ${platformLine()}`
+      },
+      {
+        k: "FAST CASH OFFER",
+        v: `${rand(paidHelpPhrases)} (One problem • one outcome • one clear deliverable.)`
+      },
+      {
+        k: "AUDIENCE BUILDER",
+        v: `${rand(interestPhrases)}`
+      }
+    ];
   }
 
-  function bestFirstMove(lane, time, strengths){
-    const s = new Set(strengths);
+  function bestFirstMove(lane, time){
     const micro = time.includes("1–2");
-    if(lane === "Digital product"){
-      return micro
-        ? "Build ONE micro template (1 page) and list it. Don’t build a full bundle yet."
-        : "Build ONE strong template + a simple sales page. Then promote it daily for 7–14 days with the same angle.";
-    }
-    if(lane === "Coaching or services"){
-      return micro
-        ? "Write one offer statement + book 2 beta calls. Your first move is proof, not polish."
-        : "Package one clear service with a deliverable, then get 3 beta clients to validate pricing and messaging.";
-    }
-    return micro
-      ? "Pick ONE topic + write 7 short posts that point to one free starter resource."
-      : "Create a weekly content loop + one freebie + one paid next step. Keep everything in one lane.";
+    const moves = {
+      "Digital product": micro
+        ? [
+            "Pick ONE idea above and draft it in one sitting. Keep it small. You’re proving demand, not building a masterpiece.",
+            "Choose ONE sellable asset and write the first version tonight. Small and shippable wins."
+          ]
+        : [
+            "Pick ONE idea and build a first version + a simple sales page. Then promote it for 7–14 days with the same angle.",
+            "Choose ONE lane, ship ONE asset, and repeat one message for 7–14 days so people actually remember you."
+          ],
+      "Coaching or services": micro
+        ? [
+            "Write ONE short paid help offer and get 2 beta clients. Proof first, polish later.",
+            "Offer ONE focused review service (with a deliverable) and book a couple test clients this week."
+          ]
+        : [
+            "Package one clear service with a deliverable, then get 3 beta clients to validate pricing and messaging.",
+            "Pick one service outcome, define the deliverable, and test it with a few people quickly."
+          ],
+      "Content & education": micro
+        ? [
+            "Pick ONE topic and write 7 short posts that point to one free starter resource.",
+            "Make ONE free resource and post about it daily this week with the same message."
+          ]
+        : [
+            "Create a weekly content loop + one freebie + one paid next step. Keep everything in one lane.",
+            "Build one simple freebie, then keep your content pointed at it for 7–14 days."
+          ]
+    };
+    const laneMoves = moves[lane] || moves["Digital product"];
+    return rand(laneMoves);
   }
 
   function rerunGuidance(){
-    return `If this feels off, rerun with fewer roles (only your strongest 3–5). Or switch your Strength Style picks — sometimes your best lane is hidden under “what you think you should do.”`;
+    return `If this feels off, rerun with only your strongest 1–3 roles. Or switch your Strength Style picks — sometimes your best lane is hidden under “what you think you should do.”`;
   }
 
   // ====== Wiring ======
@@ -422,16 +628,14 @@
     $("warnMsg").style.display = "none";
 
     const roles = splitRoles($("roles").value);
-    if(roles.length < 2){
+    if(roles.length < 1){
       $("warnMsg").style.display = "block";
       return;
     }
 
     let strengths = getStrengths();
     if(strengths.length > 2){
-      // keep to 2 max as designed
       strengths = strengths.slice(0,2);
-      // silently uncheck extras
       const checked = Array.from(document.querySelectorAll('input[name="strength"]:checked'));
       checked.forEach((el, idx) => { if(idx > 1) el.checked = false; });
     }
@@ -455,7 +659,7 @@
       ideasEl.appendChild(div);
     });
 
-    $("firstMove").textContent = bestFirstMove(lane, time, strengths);
+    $("firstMove").textContent = bestFirstMove(lane, time);
     $("timeFit").textContent = "Time-fit guidance: " + timeGuidance(time);
     $("rerun").textContent = rerunGuidance();
 
@@ -467,14 +671,14 @@
   $("resetBtn").addEventListener("click", () => {
     $("roles").value = "";
     $("direction").value = "Not sure";
-    $("time").value = "1–2 hours/week";
+    $("time").value = "Barely any (1–2 hours)";
     document.querySelectorAll('input[name="strength"]').forEach(x => x.checked = false);
     $("outBlock").style.display = "none";
     $("emptyState").style.display = "block";
     $("warnMsg").style.display = "none";
     $("savedMsg").style.display = "none";
     $("copiedMsg").style.display = "none";
-    localStorage.removeItem("eti_starter_v1");
+    localStorage.removeItem("eti_starter_v2");
   });
 
   $("saveBtn").addEventListener("click", () => {
@@ -484,37 +688,45 @@
       time: $("time").value,
       strengths: getStrengths()
     };
-    localStorage.setItem("eti_starter_v1", JSON.stringify(data));
+    localStorage.setItem("eti_starter_v2", JSON.stringify(data));
     $("savedMsg").style.display = "block";
     setTimeout(()=> $("savedMsg").style.display="none", 1600);
   });
 
   // load saved
   (function(){
-    const raw = localStorage.getItem("eti_starter_v1");
+    const raw = localStorage.getItem("eti_starter_v2");
     if(!raw) return;
     try{
       const data = JSON.parse(raw);
       $("roles").value = data.roles || "";
       $("direction").value = data.direction || "Not sure";
-      $("time").value = data.time || "1–2 hours/week";
+      $("time").value = data.time || "Barely any (1–2 hours)";
       const s = new Set(data.strengths || []);
       document.querySelectorAll('input[name="strength"]').forEach(x => x.checked = s.has(x.value));
     }catch(e){}
   })();
 
   $("copyBtn").addEventListener("click", async () => {
+    const ideaText = Array.from(document.querySelectorAll("#ideas .idea")).map((d,i)=> {
+      const k = d.querySelector(".k").textContent;
+      const v = d.querySelector(".v").textContent;
+      return `${i+1}) ${k}: ${v}`;
+    }).join("\n\n");
+
     const text =
 `ETI Starter Results
 -------------------
-Time Fit: ${$("badgeTime").textContent.replace("Time fit: ","")}
-Direction: ${$("badgeDir").textContent.replace("Direction: ","")}
+${$("badgeTime").textContent}
+${$("badgeDir").textContent}
 
 Experience Summary:
 ${$("summary").textContent}
 
 3 Monetization Ideas:
-${Array.from(document.querySelectorAll("#ideas .idea")).map((d,i)=> `${i+1}) ${d.querySelector(".k").textContent}: ${d.querySelector(".v").textContent}`).join("\n\n")}
+${$("frameLine").textContent}
+
+${ideaText}
 
 Best First Move:
 ${$("firstMove").textContent}
@@ -530,7 +742,6 @@ ${$("rerun").textContent}
       $("copiedMsg").style.display = "block";
       setTimeout(()=> $("copiedMsg").style.display="none", 1600);
     }catch(e){
-      // fallback
       const ta = document.createElement("textarea");
       ta.value = text;
       document.body.appendChild(ta);
@@ -546,4 +757,3 @@ ${$("rerun").textContent}
 </script>
 </body>
 </html>
-
