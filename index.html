@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ETI Starter — Experience → Income Starter</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#111111;
+      --muted:#6b6b6b;
+      --line:#e8e8e8;
+      --card:#fafafa;
+      --accent:#946735;   /* warm brown */
+      --accent2:#CDA476;  /* muted gold */
+      --ok:#1f7a3a;
+      --warn:#8a5b00;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:linear-gradient(180deg,#fff, #fff 40%, #fbf7f3);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:26px 18px 60px}
+    header{
+      display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex;flex-direction:column;gap:6px;
+    }
+    .title{
+      font-size:28px;line-height:1.15;margin:0;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      max-width:68ch;
+    }
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+      background:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.04);
+      font-size:13px;color:var(--muted);
+      user-select:none;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:16px;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background:var(--bg);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:16px 16px 12px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#fff,#fff,#fcfbf9);
+    }
+    .card .hd h2{
+      margin:0;font-size:16px;letter-spacing:.02em;
+      text-transform:uppercase;
+    }
+    .card .hd p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .card .bd{padding:16px}
+    label{display:block;font-size:13px;color:var(--muted);margin:12px 0 8px}
+    input[type="text"], textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      outline:none;
+      background:#fff;
+      font-size:14px;
+    }
+    textarea{min-height:92px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width: 520px){ .row{grid-template-columns:1fr} }
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{
+      display:flex;align-items:center;gap:8px;
+      padding:10px 12px;border:1px solid var(--line);
+      border-radius:999px;background:#fff;
+      font-size:13px;color:var(--ink);
+    }
+    .chip input{accent-color: var(--accent)}
+    .actions{
+      display:flex;flex-wrap:wrap;gap:10px;margin-top:16px
+    }
+    button{
+      border:0;
+      border-radius:999px;
+      padding:12px 14px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:14px;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent2), var(--accent));
+      color:#fff;
+    }
+    .btn-ghost{
+      background:#fff;
+      border:1px solid var(--line);
+      color:var(--ink);
+    }
+    .btn-link{
+      background:transparent;
+      color:var(--accent);
+      padding:8px 6px;
+      text-decoration:underline;
+      font-weight:600;
+    }
+    .note{
+      margin-top:10px;
+      font-size:12px;color:var(--muted);
+    }
+    .out{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      margin-top:12px;
+    }
+    .out h3{margin:0 0 8px;font-size:14px;text-transform:uppercase;letter-spacing:.03em}
+    .out p{margin:8px 0;color:#1a1a1a}
+    .out .muted{color:var(--muted);font-size:13px}
+    .idea{
+      padding:12px;border-radius:14px;background:#fff;border:1px solid var(--line);
+      margin:10px 0;
+    }
+    .idea .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+    .idea .v{margin:6px 0 0;font-size:14px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;border:1px solid var(--line);
+      background:#fff;font-size:12px;color:var(--muted)
+    }
+    .bar{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      margin-top:10px;flex-wrap:wrap;
+    }
+    .divider{height:1px;background:var(--line);margin:12px 0}
+    .cta{
+      background:#fff;
+      border:1px dashed rgba(148,103,53,.45);
+      border-radius:16px;
+      padding:14px;
+    }
+    .cta h4{margin:0 0 6px;font-size:14px}
+    .cta p{margin:0;color:var(--muted);font-size:13px}
+    .cta .actions{margin-top:10px}
+    .success{
+      color:var(--ok);font-weight:700;font-size:12px;display:none
+    }
+    .warn{color:var(--warn);font-weight:700;font-size:12px;display:none}
+    footer{margin-top:18px;color:var(--muted);font-size:12px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1 class="title">ETI Starter <span class="mono" style="opacity:.55;">(Experience → Income Starter)</span></h1>
+        <p class="subtitle">Drop your job titles (roles only) and get 3 realistic monetization directions you can start without overthinking.</p>
+      </div>
+      <div class="pill">✅ Free starter tool • fast clarity • low overwhelm</div>
+    </header>
+
+    <div class="grid">
+      <!-- INPUTS -->
+      <section class="card">
+        <div class="hd">
+          <h2>Your Inputs</h2>
+          <p>Keep it simple. Job titles / roles only — paid or unpaid.</p>
+        </div>
+        <div class="bd">
+          <label for="roles">1) Job titles / roles (required)</label>
+          <textarea id="roles" placeholder="Example: Customer Service Rep; Etsy Seller; Office Manager; PTA volunteer; Event planner; Blogger"></textarea>
+
+          <div class="row">
+            <div>
+              <label for="direction">2) Curiosity direction</label>
+              <select id="direction">
+                <option value="Not sure">Not sure</option>
+                <option value="Digital product">Digital product</option>
+                <option value="Coaching or services">Coaching or services</option>
+                <option value="Content & education">Content & education</option>
+              </select>
+            </div>
+            <div>
+              <label for="time">4) Weekly time reality</label>
+              <select id="time">
+                <option value="1–2 hours/week">1–2 hrs</option>
+                <option value="A few hours/week">A few hrs</option>
+                <option value="Flexible time">Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <label>3) Strength style (pick 1–2)</label>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="strength" value="Teaching"> Teaching</label>
+            <label class="chip"><input type="checkbox" name="strength" value="Organizing"> Organizing</label>
+            <label class="chip"><input type="checkbox" name="strength" value="Templates/systems"> Templates/systems</label>
+            <label class="chip"><input type="checkbox" name="strength" value="Coaching"> Coaching</label>
+            <label class="chip"><input type="checkbox" name="strength" value="Writing"> Writing</label>
+            <label class="chip"><input type="checkbox" name="strength" value="Tech/AI"> Tech/AI</label>
+            <label class="chip"><input type="checkbox" name="strength" value="Admin"> Admin</label>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="runBtn">Generate my ETI ideas</button>
+            <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+            <button class="btn-ghost" id="saveBtn" type="button">Save (on this device)</button>
+          </div>
+          <div class="note">Privacy note: This tool runs in your browser. If you click “Save,” it stores only on your device (localStorage).</div>
+          <div class="success" id="savedMsg">Saved ✓</div>
+          <div class="warn" id="warnMsg">Please add at least 2 roles/titles.</div>
+        </div>
+      </section>
+
+      <!-- OUTPUTS -->
+      <section class="card" id="resultsCard">
+        <div class="hd">
+          <h2>Your Outputs</h2>
+          <p>Clarity first. Execution comes later.</p>
+        </div>
+        <div class="bd">
+          <div class="out" id="outBlock" style="display:none;">
+            <div class="bar">
+              <span class="badge" id="badgeTime">Time fit: —</span>
+              <span class="badge" id="badgeDir">Direction: —</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Experience Summary</h3>
+            <p id="summary" class="muted"></p>
+
+            <div class="divider"></div>
+
+            <h3>3 Monetization Ideas (curated)</h3>
+            <div id="ideas"></div>
+
+            <div class="divider"></div>
+
+            <h3>Best First Move</h3>
+            <p id="firstMove"></p>
+            <p class="muted" id="timeFit"></p>
+
+            <div class="divider"></div>
+
+            <h3>If your results miss the mark</h3>
+            <p class="muted" id="rerun"></p>
+
+            <div class="divider"></div>
+
+            <div class="cta">
+              <h4>Want me to build your roadmap?</h4>
+              <p>Get a done-for-you 2-week plan + your best 3 offers (based on your experience) — clear next steps, no overwhelm.</p>
+              <div class="actions">
+                <a class="btn-primary" id="roadmapLink" href="#" target="_blank" rel="noopener">Get the $27 Roadmap</a>
+                <a class="btn-ghost" id="vipLink" href="#" target="_blank" rel="noopener">Upgrade: $97 1:1 Kit</a>
+              </div>
+              <p class="note">Tip: set these links to your checkout (ThriveCart/Beacons/etc.).</p>
+            </div>
+
+            <div class="actions" style="margin-top:14px;">
+              <button class="btn-ghost" id="copyBtn" type="button">Copy results</button>
+              <button class="btn-link" id="printBtn" type="button">Print / Save as PDF</button>
+            </div>
+            <div class="success" id="copiedMsg">Copied ✓</div>
+          </div>
+
+          <div class="out" id="emptyState">
+            <h3>Ready when you are</h3>
+            <p class="muted">Fill out the inputs and hit <strong>Generate</strong>. Your results will show here.</p>
+          </div>
+
+          <footer>
+            <div>Built for speed + clarity. Not legal/financial advice. Results are idea prompts to help you choose a lane.</div>
+          </footer>
+        </div>
+      </section>
+    </div>
+  </div>
+
+<script>
+  // ====== CONFIG: set your paid links here ======
+  const ROADMAP_URL = "https://YOUR-CHECKOUT-LINK.com/eti-roadmap";
+  const VIP_URL     = "https://YOUR-CHECKOUT-LINK.com/eti-vip";
+
+  // ====== Helpers ======
+  const $ = (id) => document.getElementById(id);
+
+  function getStrengths(){
+    return Array.from(document.querySelectorAll('input[name="strength"]:checked')).map(x => x.value);
+  }
+
+  function splitRoles(text){
+    // split by new lines, commas, semicolons
+    return text
+      .split(/\n|,|;/g)
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  function pickLane(direction, strengths){
+    // lightweight lane logic
+    const s = new Set(strengths);
+    if(direction !== "Not sure") return direction;
+
+    if(s.has("Templates/systems") || s.has("Organizing")) return "Digital product";
+    if(s.has("Coaching") || s.has("Teaching")) return "Coaching or services";
+    if(s.has("Writing")) return "Content & education";
+    if(s.has("Tech/AI")) return "Content & education";
+    return "Digital product";
+  }
+
+  function timeGuidance(time){
+    if(time.includes("1–2")) return "Keep it tiny: one offer idea + one landing page or one Etsy listing. No big builds.";
+    if(time.includes("few")) return "Choose one offer lane and build one small asset + one simple promotion loop.";
+    return "You can build faster: pick a lane, ship a starter offer, then refine based on feedback.";
+  }
+
+  function buildSummary(roles, strengths, direction, time){
+    const strengthText = strengths.length ? strengths.join(", ") : "your natural skills";
+    return `Based on your roles (${roles.slice(0,4).join(", ")}${roles.length>4 ? "…" : ""}), your best leverage is ${strengthText}. Your curiosity points toward ${direction}, and your time reality is ${time}. The goal: pick one lane that fits your life and ship something small that proves demand.`;
+  }
+
+  function makeIdeas(roles, strengths, lane){
+    // Use roles + strengths to generate curated, non-overwhelming ideas.
+    // This is deterministic (no AI), but feels personalized.
+    const roleHints = roles.slice(0,3);
+    const s = new Set(strengths);
+
+    const ideas = [];
+
+    // Idea 1: Templates/systems lane
+    if(lane === "Digital product"){
+      const angle = (s.has("Organizing") || s.has("Templates/systems"))
+        ? "Turn your process into a plug-and-play template."
+        : "Package what you already do into a simple downloadable.";
+      ideas.push({
+        k:"Digital Product",
+        v:`${angle} Create a 1-page checklist / planner that helps someone get a result you used to deliver in your roles (ex: “${roleHints[0] || "Your Role"}” workflow checklist). Sell it on Etsy or Gumroad.`
+      });
+    } else if(lane === "Coaching or services"){
+      ideas.push({
+        k:"Service Offer",
+        v:`Create a single “done-with-you” service based on your experience: a 60-minute clarity session + a simple deliverable (script, plan, or setup). Position it around the result, not your resume.`
+      });
+    } else {
+      ideas.push({
+        k:"Content & Education",
+        v:`Pick one topic you can explain quickly because you lived it. Create a weekly “how I’d handle this” series and funnel people to one starter resource (PDF, checklist, mini-training).`
+      });
+    }
+
+    // Idea 2: Coaching/services option (always)
+    ideas.push({
+      k:"Fast Cash Offer",
+      v:`Offer a “mini audit” or “setup sprint” to a specific person you used to help in your roles. Keep it narrow: one problem, one outcome, one price. (Example: “I’ll fix your onboarding email sequence in 48 hours.”)`
+    });
+
+    // Idea 3: Content/lead magnet option (always)
+    ideas.push({
+      k:"Audience Builder",
+      v:`Create one free “starter” resource tied to your experience (checklist, script, swipe file). Post it consistently for 7–14 days with the same message so people know what you do.`
+    });
+
+    // Make sure they're distinct and not overwhelming
+    return ideas.slice(0,3);
+  }
+
+  function bestFirstMove(lane, time, strengths){
+    const s = new Set(strengths);
+    const micro = time.includes("1–2");
+    if(lane === "Digital product"){
+      return micro
+        ? "Build ONE micro template (1 page) and list it. Don’t build a full bundle yet."
+        : "Build ONE strong template + a simple sales page. Then promote it daily for 7–14 days with the same angle.";
+    }
+    if(lane === "Coaching or services"){
+      return micro
+        ? "Write one offer statement + book 2 beta calls. Your first move is proof, not polish."
+        : "Package one clear service with a deliverable, then get 3 beta clients to validate pricing and messaging.";
+    }
+    return micro
+      ? "Pick ONE topic + write 7 short posts that point to one free starter resource."
+      : "Create a weekly content loop + one freebie + one paid next step. Keep everything in one lane.";
+  }
+
+  function rerunGuidance(){
+    return `If this feels off, rerun with fewer roles (only your strongest 3–5). Or switch your Strength Style picks — sometimes your best lane is hidden under “what you think you should do.”`;
+  }
+
+  // ====== Wiring ======
+  function setPaidLinks(){
+    $("roadmapLink").href = ROADMAP_URL;
+    $("vipLink").href = VIP_URL;
+  }
+  setPaidLinks();
+
+  $("runBtn").addEventListener("click", () => {
+    $("warnMsg").style.display = "none";
+
+    const roles = splitRoles($("roles").value);
+    if(roles.length < 2){
+      $("warnMsg").style.display = "block";
+      return;
+    }
+
+    let strengths = getStrengths();
+    if(strengths.length > 2){
+      // keep to 2 max as designed
+      strengths = strengths.slice(0,2);
+      // silently uncheck extras
+      const checked = Array.from(document.querySelectorAll('input[name="strength"]:checked'));
+      checked.forEach((el, idx) => { if(idx > 1) el.checked = false; });
+    }
+
+    const directionRaw = $("direction").value;
+    const lane = pickLane(directionRaw, strengths);
+    const time = $("time").value;
+
+    $("badgeTime").textContent = "Time fit: " + time;
+    $("badgeDir").textContent = "Direction: " + lane;
+
+    $("summary").textContent = buildSummary(roles, strengths, lane, time);
+
+    const ideas = makeIdeas(roles, strengths, lane);
+    const ideasEl = $("ideas");
+    ideasEl.innerHTML = "";
+    ideas.forEach(obj => {
+      const div = document.createElement("div");
+      div.className = "idea";
+      div.innerHTML = `<div class="k">${obj.k}</div><div class="v">${obj.v}</div>`;
+      ideasEl.appendChild(div);
+    });
+
+    $("firstMove").textContent = bestFirstMove(lane, time, strengths);
+    $("timeFit").textContent = "Time-fit guidance: " + timeGuidance(time);
+    $("rerun").textContent = rerunGuidance();
+
+    $("emptyState").style.display = "none";
+    $("outBlock").style.display = "block";
+    $("outBlock").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  $("resetBtn").addEventListener("click", () => {
+    $("roles").value = "";
+    $("direction").value = "Not sure";
+    $("time").value = "1–2 hours/week";
+    document.querySelectorAll('input[name="strength"]').forEach(x => x.checked = false);
+    $("outBlock").style.display = "none";
+    $("emptyState").style.display = "block";
+    $("warnMsg").style.display = "none";
+    $("savedMsg").style.display = "none";
+    $("copiedMsg").style.display = "none";
+    localStorage.removeItem("eti_starter_v1");
+  });
+
+  $("saveBtn").addEventListener("click", () => {
+    const data = {
+      roles: $("roles").value,
+      direction: $("direction").value,
+      time: $("time").value,
+      strengths: getStrengths()
+    };
+    localStorage.setItem("eti_starter_v1", JSON.stringify(data));
+    $("savedMsg").style.display = "block";
+    setTimeout(()=> $("savedMsg").style.display="none", 1600);
+  });
+
+  // load saved
+  (function(){
+    const raw = localStorage.getItem("eti_starter_v1");
+    if(!raw) return;
+    try{
+      const data = JSON.parse(raw);
+      $("roles").value = data.roles || "";
+      $("direction").value = data.direction || "Not sure";
+      $("time").value = data.time || "1–2 hours/week";
+      const s = new Set(data.strengths || []);
+      document.querySelectorAll('input[name="strength"]').forEach(x => x.checked = s.has(x.value));
+    }catch(e){}
+  })();
+
+  $("copyBtn").addEventListener("click", async () => {
+    const text =
+`ETI Starter Results
+-------------------
+Time Fit: ${$("badgeTime").textContent.replace("Time fit: ","")}
+Direction: ${$("badgeDir").textContent.replace("Direction: ","")}
+
+Experience Summary:
+${$("summary").textContent}
+
+3 Monetization Ideas:
+${Array.from(document.querySelectorAll("#ideas .idea")).map((d,i)=> `${i+1}) ${d.querySelector(".k").textContent}: ${d.querySelector(".v").textContent}`).join("\n\n")}
+
+Best First Move:
+${$("firstMove").textContent}
+
+Time-fit Guidance:
+${$("timeFit").textContent.replace("Time-fit guidance: ","")}
+
+If it misses the mark:
+${$("rerun").textContent}
+`;
+    try{
+      await navigator.clipboard.writeText(text);
+      $("copiedMsg").style.display = "block";
+      setTimeout(()=> $("copiedMsg").style.display="none", 1600);
+    }catch(e){
+      // fallback
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      $("copiedMsg").style.display = "block";
+      setTimeout(()=> $("copiedMsg").style.display="none", 1600);
+    }
+  });
+
+  $("printBtn").addEventListener("click", () => window.print());
+</script>
+</body>
+</html>
+
